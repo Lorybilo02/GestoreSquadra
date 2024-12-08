@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String URL = "jdbc:sqlite:database.db"; // Percorso del tuo file SQLite
+    private static final String URL = "jdbc:sqlite:database.db";
 
     // per ottenere la connessione
     public static Connection getConnection() throws SQLException {
