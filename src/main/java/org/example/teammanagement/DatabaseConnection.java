@@ -1,18 +1,16 @@
 package org.example.teammanagement;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DatabaseConnection {
     private static final String URL = "jdbc:sqlite:database.db";
 
-    // per ottenere la connessione
+    // Metodo per ottenere la connessione
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL);
     }
 
-
+    // Metodo per testare la connessione
     public static void testConnection() {
         try (Connection connection = getConnection()) {
             if (connection != null) {
@@ -21,5 +19,27 @@ public class DatabaseConnection {
         } catch (SQLException e) {
             System.out.println("Errore nella connessione al database: " + e.getMessage());
         }
+    }
+
+    // Verificare la password durante il login
+    public boolean login(String username, String plainPassword) {
+        String query = "SELECT Password FROM Users WHERE Username = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                String hashedPassword = rs.getString("Password");
+                // Verifica la corrispondenza della password hashata
+                return PasswordUtils.verifyPassword(plainPassword, hashedPassword);
+            }
+        } catch (SQLException e) {
+            System.out.println("Errore durante il login: " + e.getMessage());
+        }
+
+        return false; // Login fallito
     }
 }
