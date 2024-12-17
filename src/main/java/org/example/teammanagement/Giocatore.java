@@ -14,8 +14,7 @@ public class Giocatore {
     private int anniContratto;
 
     // Costruttore
-    public Giocatore(int id, String username, String password, String nomeCognome, String ruolo, int eta,
-                     int numMaglia, String nazionalita, String piede, int stipendio, int anniContratto) {
+    public Giocatore() {
         this.id = id;
         this.username = username;
         this.password = password;
