@@ -1,1 +1,7 @@
-README
+L’applicazione ha come obbiettivo di semplificare la gestione delle informazioni relative ai componenti di una squadra di calcio, oltre a favorire lo scambio di comunicazioni tra gli utenti. Il sistema prevede l’accesso per tre diverse tipologie di utenti: l’Admin della squadra, l’Allenatore e il Giocatore. Ogni utente dispone di un username univoco e di una password personale che consentono l’accesso al sistema, e ognuno di essi ha compiti e funzionalità specifici. 
+
+L’Admin, responsabile della gestione generale della squadra, può visualizzare e modificare i dati di tutti i membri della squadra. Inoltre, l’Admin ha il compito di esaminare e gestire le richieste inviate dagli Allenatori e dai Giocatori per variazioni contrattuali, come modifiche allo stipendio o rinnovi di contratto. Dopo aver valutato tali richieste, l’Admin può accettarle o rifiutarle direttamente tramite il sistema. 
+
+L’Allenatore, invece, può accedere al proprio profilo personale per consultare i dati che lo riguardano e inviare richieste all’Admin per modifiche al contratto o allo stipendio. Oltre a questo, ha la possibilità di gestire la propria formazione ideale, selezionando i giocatori e il modulo tattico da schierare in campo, ottimizzando così la strategia della squadra. 
+
+Infine, il Giocatore dispone di un accesso ai propri dati personali e può utilizzare il sistema per inviare richieste di variazione del contratto, come l’aumento degli anni di validità o modifiche allo stipendio. In questo modo, ogni componente della squadra dispone di strumenti adeguati per gestire in modo efficace le proprie necessità e comunicare con le altre figure professionali coinvolte. 
