@@ -4,12 +4,14 @@ public class Giocatore {
     private int id;
     private String username;
     private String password;
-    private String nomeCognome;
+    private String nome;
+    private String cognome;
     private String ruolo;
     private int eta;
     private int numMaglia;
     private String nazionalita;
     private String piede;
+    private String squadra;
     private int stipendio;
     private int anniContratto;
 
@@ -18,12 +20,14 @@ public class Giocatore {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.nomeCognome = nomeCognome;
+        this.nome = nome;
+        this.cognome = cognome;
         this.ruolo = ruolo;
         this.eta = eta;
         this.numMaglia = numMaglia;
         this.nazionalita = nazionalita;
         this.piede = piede;
+        this.squadra = squadra;
         this.stipendio = stipendio;
         this.anniContratto = anniContratto;
     }
@@ -54,12 +58,20 @@ public class Giocatore {
         this.password = password;
     }
 
-    public String getNomeCognome() {
-        return nomeCognome;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeCognome(String nomeCognome) {
-        this.nomeCognome = nomeCognome;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
     }
 
     public String getRuolo() {
@@ -100,6 +112,14 @@ public class Giocatore {
 
     public void setPiede(String piede) {
         this.piede = piede;
+    }
+
+
+    public String getSquadra() {
+        return squadra;
+    }
+    public void setSquadra(String squadra) {
+        this.squadra = squadra;
     }
 
     public int getStipendio() {
