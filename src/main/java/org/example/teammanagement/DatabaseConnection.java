@@ -97,7 +97,7 @@ public class DatabaseConnection {
                 giocatore.setGoal(rs.getInt("Goal"));
                 giocatore.setAssist(rs.getInt("Assist"));
                 giocatore.setMinutiGiocati(rs.getInt("MinutiGiocati"));
-                giocatore.setIsTitolare(rs.getInt("IsTitolare"));
+                giocatore.setIsTitolare(rs.getInt("isTitolare"));
 
                 giocatori.add(giocatore);
             }
@@ -111,7 +111,7 @@ public class DatabaseConnection {
     public static boolean addGiocatore(String username, String password, String nome, String cognome,
                                        String ruolo, int eta, int numMaglia, String nazionalita,
                                        String piede, String squadra, int stipendio, int anniContratto, int goal, int assist, int minutiGiocati, int isTitolare) {
-        String query = "INSERT INTO Giocatori (Username, Password, Nome, Cognome, Ruolo, Eta, NumMaglia, Nazionalità, Piede, Squadra, Stipendio, AnniContratto) " +
+        String query = "INSERT INTO Giocatori (Username, Password, Nome, Cognome, Ruolo, Eta, NumMaglia, Nazionalità, Piede, Squadra, Stipendio, AnniContratto, Goal, Assist, MinutiGiocati, isTitolare) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -133,6 +133,7 @@ public class DatabaseConnection {
             pstmt.setInt(16, isTitolare);
 
             int rowsAffected = pstmt.executeUpdate();
+            System.out.println("Giocatore Aggiunto");
             return rowsAffected > 0;
         } catch (SQLException e) {
             e.printStackTrace();
