@@ -14,7 +14,10 @@ public class Giocatore {
     private String squadra;
     private int stipendio;
     private int anniContratto;
-
+    private int Goal;
+    private int Assist;
+    private int MinutiGiocati;
+    private int isTitolare;
     // Costruttore
     public Giocatore() {
         this.id = id;
@@ -30,6 +33,11 @@ public class Giocatore {
         this.squadra = squadra;
         this.stipendio = stipendio;
         this.anniContratto = anniContratto;
+        this.Goal = Goal;
+        this.Assist = Assist;
+        this.MinutiGiocati = MinutiGiocati;
+        this.isTitolare = isTitolare;
+
     }
 
     // getter e setter
@@ -137,6 +145,14 @@ public class Giocatore {
     public void setAnniContratto(int anniContratto) {
         this.anniContratto = anniContratto;
     }
+    public int getGoal() {return Goal;}
+    public void setGoal(int Goal) {this.Goal = Goal;}
+    public int getAssist() {return Assist;}
+    public void setAssist(int Assist) {this.Assist = Assist;}
+    public int getMinutiGiocati() { return MinutiGiocati;}
+    public void setMinutiGiocati(int minutiGiocati) {this.MinutiGiocati = MinutiGiocati;}
+    public int getIsTitolare() { return isTitolare;}
+    public void setIsTitolare( int isTitolare) {this.isTitolare = isTitolare;}
 
 
 }

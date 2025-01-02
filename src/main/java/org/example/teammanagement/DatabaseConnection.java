@@ -71,7 +71,7 @@ public class DatabaseConnection {
 
         return squadra;
     }
-    //ritorna i giocaotori che deve gestire un admin
+    //ritorna i giocatori che deve gestire un admin
     public static List<Giocatore> getGiocatoriBySquadra(String squadra) {
         String query = "SELECT * FROM Giocatori WHERE Squadra = ?";
         List<Giocatore> giocatori = new ArrayList<>();
@@ -94,6 +94,10 @@ public class DatabaseConnection {
                 giocatore.setPiede(rs.getString("Piede"));
                 giocatore.setStipendio(rs.getInt("Stipendio"));
                 giocatore.setAnniContratto(rs.getInt("AnniContratto"));
+                giocatore.setGoal(rs.getInt("Goal"));
+                giocatore.setAssist(rs.getInt("Assist"));
+                giocatore.setMinutiGiocati(rs.getInt("MinutiGiocati"));
+                giocatore.setIsTitolare(rs.getInt("IsTitolare"));
 
                 giocatori.add(giocatore);
             }
@@ -106,9 +110,9 @@ public class DatabaseConnection {
     //funzione per aggiungere giocatori (per semplicità)
     public static boolean addGiocatore(String username, String password, String nome, String cognome,
                                        String ruolo, int eta, int numMaglia, String nazionalita,
-                                       String piede, String squadra, int stipendio, int anniContratto) {
+                                       String piede, String squadra, int stipendio, int anniContratto, int goal, int assist, int minutiGiocati, int isTitolare) {
         String query = "INSERT INTO Giocatori (Username, Password, Nome, Cognome, Ruolo, Eta, NumMaglia, Nazionalità, Piede, Squadra, Stipendio, AnniContratto) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, username);
@@ -123,6 +127,10 @@ public class DatabaseConnection {
             pstmt.setString(10, squadra);
             pstmt.setInt(11, stipendio);
             pstmt.setInt(12, anniContratto);
+            pstmt.setInt(13, goal);
+            pstmt.setInt(14, assist);
+            pstmt.setInt(15, minutiGiocati);
+            pstmt.setInt(16, isTitolare);
 
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
