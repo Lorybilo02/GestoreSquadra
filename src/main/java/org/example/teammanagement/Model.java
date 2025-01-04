@@ -219,11 +219,11 @@ public class Model {
             psmt.setString(1, username);
             psmt.setString(2, PasswordUtils.hashPassword(password));
             psmt.setString(3, Nome);
-            psmt.setString(3, Cognome);
-            psmt.setString(3, Eta);
-            psmt.setString(3, Stipendio);
-            psmt.setString(3, Squadra);
-            psmt.setString(3, AnniContratto);
+            psmt.setString(4, Cognome);
+            psmt.setString(5, Eta);
+            psmt.setString(6, Stipendio);
+            psmt.setString(7, Squadra);
+            psmt.setString(8, AnniContratto);
 
             int rowsAffected = psmt.executeUpdate();
             System.out.println("Allenatore aggiunto");
