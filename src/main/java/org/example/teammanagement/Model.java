@@ -88,7 +88,7 @@ public class Model {
         return squadra;
     }
 
-    // ritorna i giocatori che deve gestire un admin
+    // ritorna una lista di giocatori di una determinata squadra
     public List<Giocatore> getGiocatoriBySquadra(String squadra) {
         String query = "SELECT * FROM Giocatori WHERE Squadra = ?";
         List<Giocatore> giocatori = new ArrayList<>();
@@ -149,6 +149,39 @@ public class Model {
 
         return allenatore;
     }
+
+    // metodo per settare un giocatore titolare prendendo come parametro il duo ID
+    public boolean setGiocatoreTitolare(int id) {
+        String query = "UPDATE Giocatori SET isTitolare = 1 WHERE ID = ?";
+
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setInt(1, id);
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0; // restituisce true se almeno una riga è stata aggiornata
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean setGiocatoreNonTitolare(int id) {
+        String query = "UPDATE Giocatori SET isTitolare = 0 WHERE ID = ?";
+
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setInt(1, id);
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+
+
 
 
 
