@@ -9,6 +9,7 @@ public class Allenatore {
     private int eta;
     private int stipendio;
     private String squadra;
+    private int AnniContratto;
 
 
     public Allenatore(int id, String username, String password, String nome,String cognome, int eta, int stipendio, String squadra) {
@@ -20,7 +21,10 @@ public class Allenatore {
         this.eta = eta;
         this.stipendio = stipendio;
         this.squadra = squadra;
+        this.AnniContratto = AnniContratto;
     }
+    //construttore vuoto
+    public Allenatore () {}
 
     // Getter e Setter per ogni attributo
 
@@ -85,7 +89,10 @@ public class Allenatore {
     public void setSquadra(String squadra) {
         this.squadra = squadra;
     }
-
+    public int getAnniContratto() {return AnniContratto;}
+    public void setAnniContratto(int AnniContratto) {
+        this.AnniContratto = AnniContratto;
+    }
 
 
 }

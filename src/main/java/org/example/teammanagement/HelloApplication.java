@@ -18,7 +18,7 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        DatabaseConnection.testConnection();
+        Model.getInstance().testConnection();
         launch();
         //Funzione autenticazione funzionante!
 
