@@ -201,7 +201,7 @@ public class Model {
         String query = "INSERT INTO Admin (Username, Password, Squadra) VALUES (?, ?, ?)";
         try (PreparedStatement psmt = connection.prepareStatement(query)) {
             psmt.setString(1, username);
-            psmt.setString(2, password);
+            psmt.setString(2, PasswordUtils.hashPassword(password));
             psmt.setString(3,squadra);
 
             int rowsAffected = psmt.executeUpdate();
@@ -217,7 +217,7 @@ public class Model {
         String query = "INSERT INTO ALLENATORI (Username, Password, Nome, Cognome, Eta, Stipendio, Squadra, AnniContratto)";
         try(PreparedStatement psmt = connection.prepareStatement(query)){
             psmt.setString(1, username);
-            psmt.setString(2, password);
+            psmt.setString(2, PasswordUtils.hashPassword(password));
             psmt.setString(3, Nome);
             psmt.setString(3, Cognome);
             psmt.setString(3, Eta);
