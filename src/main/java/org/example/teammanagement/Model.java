@@ -49,7 +49,7 @@ public class Model {
                 "SELECT Password FROM Allenatori WHERE Username = ?",
                 "SELECT Password FROM Giocatori WHERE Username = ?"
         };
-
+        // 0 = Admin , 1 = Allenatore, 2 = Giocatore
         for (int i = 0; i < queries.length; i++) {
             try (PreparedStatement pstmt = connection.prepareStatement(queries[i])) {
                 pstmt.setString(1, username);
@@ -72,6 +72,44 @@ public class Model {
     // ritorna la squadra associata ad un admin
     public String getSquadraByAdmin(String username) {
         String query = "SELECT Squadra FROM Admins WHERE Username = ?";
+        String squadra = null;
+
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                squadra = rs.getString("Squadra");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return squadra;
+    }
+
+    // ritorna la squadra associata ad un allenaotore
+    public String getSquadraByAllenatore(String username) {
+        String query = "SELECT Squadra FROM Allenatori WHERE Username = ?";
+        String squadra = null;
+
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                squadra = rs.getString("Squadra");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return squadra;
+    }
+
+    // ritorna squadra ssociata ad un giocatore
+    public String getSquadraByGiocatore(String username) {
+        String query = "SELECT Squadra FROM Giocatori WHERE Username = ?";
         String squadra = null;
 
         try (PreparedStatement pstmt = connection.prepareStatement(query)) {
@@ -126,7 +164,7 @@ public class Model {
     //metodo per tornare i dati di un allenatore in base alla squadra
     public Allenatore getAllenatoreBySquadra(String squadra) {
         String query = "SELECT * FROM Allenatori WHERE Squadra = ?";
-        Allenatore allenatore = null; // Inizializza fuori dal blocco try
+        Allenatore allenatore = null;
 
         try (PreparedStatement pstmt = connection.prepareStatement(query)) {
             pstmt.setString(1, squadra);
@@ -149,6 +187,40 @@ public class Model {
 
         return allenatore;
     }
+    // ritorna dati di un giocatore data una squadra
+    public Giocatore getGiocatoreBySquadra(String squadra) {
+        String query = "SELECT * FROM Giocatori WHERE Squadra = ?";
+        Giocatore giocatore = null;
+
+        try (PreparedStatement pstmt =connection.prepareStatement(query)){
+            pstmt.setString(1,squadra);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()){
+                giocatore = new Giocatore();
+                giocatore.setId(rs.getInt("ID"));
+                giocatore.setNome(rs.getString("Nome"));
+                giocatore.setCognome(rs.getString("Cognome"));
+                giocatore.setRuolo(rs.getString("Ruolo"));
+                giocatore.setEta(rs.getInt("Eta"));
+                giocatore.setNumMaglia(rs.getInt("NumMaglia"));
+                giocatore.setNazionalita(rs.getString("Nazionalità"));
+                giocatore.setPiede(rs.getString("Piede"));
+                giocatore.setStipendio(rs.getInt("Stipendio"));
+                giocatore.setAnniContratto(rs.getInt("AnniContratto"));
+                giocatore.setGoal(rs.getInt("Goal"));
+                giocatore.setAssist(rs.getInt("Assist"));
+                giocatore.setMinutiGiocati(rs.getInt("MinutiGiocati"));
+                giocatore.setIsTitolare(rs.getInt("isTitolare"));
+
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return giocatore;
+    }
+
 
     // metodo per settare un giocatore titolare prendendo come parametro il duo ID
     public boolean setGiocatoreTitolare(int id) {
