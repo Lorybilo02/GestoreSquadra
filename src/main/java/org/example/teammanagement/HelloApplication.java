@@ -20,6 +20,5 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
         Model.getInstance().testConnection();
         launch();
-        Model.getInstance().addAdmin("AmministratoreGiuve","AmministratoreGiuve","Giuventus");
     }
 }
