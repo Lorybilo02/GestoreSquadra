@@ -20,6 +20,6 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
         Model.getInstance().testConnection();
         launch();
-        //Funzione autenticazione funzionante!
+        Model.getInstance().addAdmin("AmministratoreGiuve","AmministratoreGiuve","Giuventus");
     }
 }
