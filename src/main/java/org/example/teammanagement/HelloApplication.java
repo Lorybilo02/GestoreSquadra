@@ -21,6 +21,5 @@ public class HelloApplication extends Application {
         Model.getInstance().testConnection();
         launch();
         //Funzione autenticazione funzionante!
-
     }
 }

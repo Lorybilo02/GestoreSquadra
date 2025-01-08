@@ -444,7 +444,7 @@ public class Model {
     }
     //metodo per aggiungere Admin (per semplicità)
     public boolean addAdmin(String username, String password,String squadra) {
-        String query = "INSERT INTO Admin (Username, Password, Squadra) VALUES (?, ?, ?)";
+        String query = "INSERT INTO Admins (Username, Password, Squadra) VALUES (?, ?, ?)";
         try (PreparedStatement psmt = connection.prepareStatement(query)) {
             psmt.setString(1, username);
             psmt.setString(2, PasswordUtils.hashPassword(password));
@@ -459,17 +459,17 @@ public class Model {
         }
     }
     //metodo per aggiungere Allenatore (per semplicità)
-    public boolean addAllenatore(String username, String password,String Nome,String Cognome, String Eta, String Stipendio, String Squadra, String AnniContratto) {
-        String query = "INSERT INTO ALLENATORI (Username, Password, Nome, Cognome, Eta, Stipendio, Squadra, AnniContratto)";
+    public boolean addAllenatore(String username, String password,String Nome,String Cognome, int Eta, int Stipendio, String Squadra, int AnniContratto) {
+        String query = "INSERT INTO Allenatori (Username, Password, Nome, Cognome, Eta, Stipendio, Squadra, AnniContratto) VALUES (?,?,?,?,?,?,?,?)";
         try(PreparedStatement psmt = connection.prepareStatement(query)){
             psmt.setString(1, username);
             psmt.setString(2, PasswordUtils.hashPassword(password));
             psmt.setString(3, Nome);
             psmt.setString(4, Cognome);
-            psmt.setString(5, Eta);
-            psmt.setString(6, Stipendio);
+            psmt.setInt(5, Eta);
+            psmt.setInt(6, Stipendio);
             psmt.setString(7, Squadra);
-            psmt.setString(8, AnniContratto);
+            psmt.setInt(8, AnniContratto);
 
             int rowsAffected = psmt.executeUpdate();
             System.out.println("Allenatore aggiunto");
