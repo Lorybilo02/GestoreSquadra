@@ -222,7 +222,7 @@ public class Model {
     }
 
 
-    // metodo per settare un giocatore titolare prendendo come parametro il duo ID
+    // metodo per settare un giocatore titolare prendendo come parametro il suo ID
     public boolean setGiocatoreTitolare(int id) {
         String query = "UPDATE Giocatori SET isTitolare = 1 WHERE ID = ?";
 
@@ -236,7 +236,6 @@ public class Model {
             return false;
         }
     }
-
     public boolean setGiocatoreNonTitolare(int id) {
         String query = "UPDATE Giocatori SET isTitolare = 0 WHERE ID = ?";
 
@@ -251,6 +250,148 @@ public class Model {
         }
 
     }
+
+    //metodo per modificare il Ruolo
+    public boolean editRuoloGiocatore(int id, String ruolo){
+        String query = "UPDATE Giocatori SET Ruolo = ? WHERE ID = ?";
+        try (PreparedStatement psmt = connection.prepareStatement(query)){
+            psmt.setString(1, ruolo);
+            psmt.setInt(2, id);
+
+            int rowsAffected = psmt.executeUpdate();
+            return rowsAffected > 0;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+    //metodo per modificare l'età
+    public boolean editEtaGiocatore(int id, int eta) {
+        String query = "UPDATE Giocatori SET Eta = ? WHERE ID = ?";
+        try (PreparedStatement psmt = connection.prepareStatement(query)) {
+            psmt.setInt(1, eta);
+            psmt.setInt(2, id);
+
+            int rowsAffected = psmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    //modificare il piede preferito
+    public boolean editPiedeGiocatore(int id, String piede){
+        String query = "UPDATE Giocatori SET Piede = ? WHERE ID = ?";
+        try (PreparedStatement psmt = connection.prepareStatement(query)){
+            psmt.setString(1, piede);
+            psmt.setInt(2, id);
+
+            int rowsAffected = psmt.executeUpdate();
+            return rowsAffected > 0;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+    //modificare NumeroMaglia
+    public boolean editNumMagliaGiocatore(int id, int numMaglia){
+        String query = "UPDATE Giocatori SET NumMaglia = ? WHERE ID = ?";
+        try (PreparedStatement psmt = connection.prepareStatement(query)){
+            psmt.setInt(1, numMaglia);
+            psmt.setInt(2, id);
+
+            int rowsAffected = psmt.executeUpdate();
+            return rowsAffected > 0;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+    //modifica stipendio Giocaotore
+    public boolean editStipendioGiocatore(int id, int stipendio) {
+        String query = "UPDATE Giocatori SET Stipendio = ? WHERE ID = ?";
+        try (PreparedStatement psmt = connection.prepareStatement(query)) {
+            psmt.setInt(1, stipendio);
+            psmt.setInt(2, id);
+
+            int rowsAffected = psmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    //modifica anniContratto
+    public boolean editAnnicontrattoGiocatore(int id, int anniContratto){
+            String query = "UPDATE Giocatori SET AnniContratto = ? WHERE ID = ?";
+            try (PreparedStatement psmt = connection.prepareStatement(query)){
+                psmt.setInt(1, anniContratto);
+                psmt.setInt(2, id);
+
+                int rowsAffected = psmt.executeUpdate();
+                return rowsAffected > 0;
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+
+        }
+    //modifica Goal Giocatore
+    public boolean editGoalGiocatore(int id, int goal){
+        String query = "UPDATE Giocatori SET Goal = ? WHERE ID = ?";
+        try (PreparedStatement psmt = connection.prepareStatement(query)){
+            psmt.setInt(1, goal);
+            psmt.setInt(2, id);
+
+            int rowsAffected = psmt.executeUpdate();
+            return rowsAffected > 0;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+    //modifica Assist Giocatore
+    public boolean editAssistGiocatore(int id, int assist){
+        String query = "UPDATE Giocatori SET Assist = ? WHERE ID = ?";
+        try (PreparedStatement psmt = connection.prepareStatement(query)){
+            psmt.setInt(1, assist);
+            psmt.setInt(2, id);
+
+            int rowsAffected = psmt.executeUpdate();
+            return rowsAffected > 0;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+    //modifica MinGioc. Giocatore
+    public boolean editMinutigiocatiGiocatore(int id, int minutiGiocati){
+        String query = "UPDATE Giocatori SET MinutiGiocati = ? WHERE ID = ?";
+        try (PreparedStatement psmt = connection.prepareStatement(query)){
+            psmt.setInt(1, minutiGiocati);
+            psmt.setInt(2, id);
+
+            int rowsAffected = psmt.executeUpdate();
+            return rowsAffected > 0;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
 
 
 
