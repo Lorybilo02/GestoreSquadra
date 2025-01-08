@@ -57,7 +57,7 @@ public class Model {
 
                 if (rs.next()) {
                     String hashedPassword = rs.getString("Password");
-                    // Verifica la password
+                    // verifica la password
                     if (PasswordUtils.verifyPassword(plainPassword, hashedPassword)) {
                         return i;
                     }
