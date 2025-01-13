@@ -9,7 +9,7 @@ public class Model {
     private static Model instance; // singleton
     private Connection connection;
 
-    private Model() {
+    Model() {
         try {
             this.connection = DriverManager.getConnection(URL);
         } catch (SQLException e) {
