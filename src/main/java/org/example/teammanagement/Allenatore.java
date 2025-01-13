@@ -12,7 +12,7 @@ public class Allenatore {
     private int AnniContratto;
 
 
-    public Allenatore(int id, String username, String password, String nome,String cognome, int eta, int stipendio, String squadra) {
+    public Allenatore(int id, String username, String password, String nome,String cognome, int eta, int stipendio, String squadra, int AnniContratto) {
         this.id = id;
         this.username = username;
         this.password = password;
