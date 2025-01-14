@@ -180,6 +180,7 @@ public class Model {
                 allenatore.setCognome(rs.getString("Cognome"));
                 allenatore.setEta(rs.getInt("Eta"));
                 allenatore.setStipendio(rs.getInt("Stipendio"));
+                allenatore.setSquadra(rs.getString("Squadra"));
                 allenatore.setAnniContratto(rs.getInt("AnniContratto"));
                 System.out.println(rs.getString("Nome"));
             }
@@ -201,6 +202,8 @@ public class Model {
             if (rs.next()){
                 giocatore = new Giocatore();
                 giocatore.setId(rs.getInt("ID"));
+                giocatore.setUsername(rs.getString("Username"));
+                giocatore.setPassword(rs.getString("Password"));
                 giocatore.setNome(rs.getString("Nome"));
                 giocatore.setCognome(rs.getString("Cognome"));
                 giocatore.setRuolo(rs.getString("Ruolo"));
@@ -208,6 +211,7 @@ public class Model {
                 giocatore.setNumMaglia(rs.getInt("NumMaglia"));
                 giocatore.setNazionalita(rs.getString("Nazionalità"));
                 giocatore.setPiede(rs.getString("Piede"));
+                giocatore.setSquadra(rs.getString("Squadra"));
                 giocatore.setStipendio(rs.getInt("Stipendio"));
                 giocatore.setAnniContratto(rs.getInt("AnniContratto"));
                 giocatore.setGoal(rs.getInt("Goal"));
