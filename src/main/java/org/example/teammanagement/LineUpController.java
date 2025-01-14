@@ -19,6 +19,7 @@ import javafx.scene.shape.Circle;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -143,7 +144,6 @@ public class LineUpController implements Initializable {
             // Attiva una funzione quando viene selezionato un nuovo elemento
             onChoiceSelected((String) newValue);
     });
-
         Platform.runLater(() ->{
             Stage stage = (Stage) name.getScene().getWindow();
             String username = stage.getTitle();
@@ -153,6 +153,10 @@ public class LineUpController implements Initializable {
             surname.setText(model.getAllenatoreBySquadra(team).getCognome());
             salary.setText(String.valueOf(model.getAllenatoreBySquadra(team).getStipendio()));
             years.setText(String.valueOf(model.getAllenatoreBySquadra(team).getAnniContratto()));
+            List<Giocatore> giocatori = model.getGiocatoriBySquadra(team);
+            for(Giocatore g : giocatori){
+                System.out.println(g.getNome());
+            }
         });
     }
 
