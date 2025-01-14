@@ -63,7 +63,7 @@ public class Allenatore {
         this.nome = nome;
     }
     public void setCognome(String cognome) {
-        this.nome = cognome;
+        this.cognome = cognome;
     }
 
     public int getEta() {

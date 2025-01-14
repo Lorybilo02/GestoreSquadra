@@ -1,5 +1,8 @@
 package org.example.teammanagement;
 
+import javafx.application.Platform;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.example.teammanagement.Modulo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +16,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -61,10 +65,15 @@ public class LineUpController implements Initializable {
     public TableColumn GoalsColumn;
     public TableColumn assistsColumn;
     public Button changeButton;
+    public Label name;
+    public Label surname;
+    public Label salary;
+    public Label years;
 
     ArrayList<Double> namesPositions = new ArrayList<Double>();
     ArrayList<Circle> circles = new ArrayList<>();
     ArrayList<Label> names = new ArrayList<>();
+    Model model = new Model();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -134,6 +143,16 @@ public class LineUpController implements Initializable {
             // Attiva una funzione quando viene selezionato un nuovo elemento
             onChoiceSelected((String) newValue);
     });
+        Platform.runLater(() ->{
+            Stage stage = (Stage) name.getScene().getWindow();
+            String username = stage.getTitle();
+            String team = model.getSquadraByAllenatore(username);
+            name.setText(model.getAllenatoreBySquadra(team).getNome());
+            System.out.println(model.getAllenatoreBySquadra(team).getCognome() + "DIO");
+            surname.setText(model.getAllenatoreBySquadra(team).getCognome());
+            salary.setText(String.valueOf(model.getAllenatoreBySquadra(team).getStipendio()));
+            years.setText(String.valueOf(model.getAllenatoreBySquadra(team).getAnniContratto()));
+        });
     }
 
     private void onChoiceSelected(String choice) {
@@ -297,4 +316,6 @@ public class LineUpController implements Initializable {
 
         changeButton.setStyle("-fx-background-color: DarkBlue; -fx-border-color: Black;");
     }
+
+
 }

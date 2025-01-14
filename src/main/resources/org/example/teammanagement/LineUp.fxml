@@ -15,15 +15,10 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<VBox onKeyPressed="#setPlayernName" prefHeight="606.0" prefWidth="644.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.teammanagement.LineUpController">
+<VBox onKeyPressed="#setPlayernName" prefHeight="613.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.teammanagement.LineUpController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: DarkSlateGrey; -fx-border-color: Black;" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="613.0" prefWidth="607.0" style="-fx-background-color: DarkSlateGrey; -fx-border-color: Black;" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-          <font>
-            <Font size="18.0" />
-          </font>
-        </Label>
             <Button fx:id="changeButton" layoutX="344.0" layoutY="328.0" mnemonicParsing="false" onMouseClicked="#changePlayerNameByClick" onMouseEntered="#hover" onMouseExited="#removeHover" prefHeight="51.0" prefWidth="178.0" style="-fx-background-color: DarkBlue; -fx-border-color: Black;" text="Cambia Titolare" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="14.0" />
@@ -235,7 +230,11 @@
                   <Label fx:id="name4" layoutX="361.0" layoutY="200.0" onMouseClicked="#setLabel" text="Gatti" />
                   <Label fx:id="name5" layoutX="473.0" layoutY="167.0" onMouseClicked="#setLabel" text="Kalulu" />
                   <Label fx:id="name1" layoutX="276.0" layoutY="245.0" onMouseClicked="#setLabel" text="Di Gregorio" />
-                  <ChoiceBox fx:id="choicer" layoutY="5.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="choicer" layoutX="489.0" layoutY="1.0" prefWidth="150.0" />
+                  <Label fx:id="name" layoutX="7.0" layoutY="3.0" prefHeight="17.0" prefWidth="94.0" text="Nome" />
+                  <Label fx:id="surname" layoutX="7.0" layoutY="19.0" text="Cognome" />
+                  <Label fx:id="salary" layoutX="7.0" layoutY="37.0" text="Stipendio" />
+                  <Label fx:id="years" layoutX="7.0" layoutY="53.0" text="Anni" />
                </children>
             </Pane>
             <TextField fx:id="changePlayerFIeld" focusTraversable="false" layoutX="66.0" layoutY="345.0" onMouseClicked="#changePlayerNameByKeyboard" prefHeight="26.0" prefWidth="178.0" />

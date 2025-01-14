@@ -44,6 +44,7 @@ public class Model {
 
     // verificare la password durante il login con ritorno di intero per tipologia utente
     public int authenticateUser(String username, String plainPassword) {
+        System.out.println(username + " " + plainPassword);
         String[] queries = {
                 "SELECT Password FROM Admins WHERE Username = ?",
                 "SELECT Password FROM Allenatori WHERE Username = ?",
@@ -180,6 +181,7 @@ public class Model {
                 allenatore.setEta(rs.getInt("Eta"));
                 allenatore.setStipendio(rs.getInt("Stipendio"));
                 allenatore.setAnniContratto(rs.getInt("AnniContratto"));
+                System.out.println(rs.getString("Nome"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
