@@ -143,6 +143,7 @@ public class LineUpController implements Initializable {
             // Attiva una funzione quando viene selezionato un nuovo elemento
             onChoiceSelected((String) newValue);
     });
+
         Platform.runLater(() ->{
             Stage stage = (Stage) name.getScene().getWindow();
             String username = stage.getTitle();
