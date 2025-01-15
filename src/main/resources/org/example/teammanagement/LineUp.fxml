@@ -240,15 +240,19 @@
             <TextField fx:id="changePlayerFIeld" focusTraversable="false" layoutX="66.0" layoutY="345.0" onMouseClicked="#changePlayerNameByKeyboard" prefHeight="26.0" prefWidth="178.0" />
             <TableView fx:id="playersTable" layoutY="392.0" prefHeight="218.0" prefWidth="624.0">
               <columns>
-                <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Nome" />
+                <TableColumn fx:id="shirtColumn" prefWidth="55.199949622154236" text="N°Maglia" />
+                <TableColumn fx:id="nameColumn" prefWidth="84.00006866455078" text="Nome" />
                   <TableColumn fx:id="surnameColumn" prefWidth="75.0" text="Cognome" />
-                  <TableColumn fx:id="numberColumn" prefWidth="75.0" text="N°Maglia" />
-                  <TableColumn fx:id="formColumn" prefWidth="88.00006103515625" text="Stato di Forma" />
-                  <TableColumn fx:id="matchesColumn" prefWidth="100.79998779296875" text="Partite Giocate" />
-                  <TableColumn fx:id="GoalsColumn" prefWidth="66.39999389648438" text="Goal" />
+                  <TableColumn fx:id="ageColumn" prefWidth="75.0" text="Età" />
+                  <TableColumn fx:id="positionColumn" prefWidth="88.00006103515625" text="Posizione" />
+                  <TableColumn fx:id="minutesColumn" prefWidth="100.79998779296875" text="Minuti Giocati" />
+                  <TableColumn fx:id="goalsColumn" prefWidth="66.39999389648438" text="Goal" />
                   <TableColumn fx:id="assistsColumn" prefWidth="67.199951171875" text="Assist" />
+                  <TableColumn fx:id="nationalityColumn" prefWidth="75.0" text="Nazionalità" />
               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
       </children>
     </AnchorPane>

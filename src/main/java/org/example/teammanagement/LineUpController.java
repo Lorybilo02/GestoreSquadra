@@ -1,7 +1,10 @@
 package org.example.teammanagement;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.example.teammanagement.Modulo;
 import javafx.event.ActionEvent;
@@ -56,20 +59,22 @@ public class LineUpController implements Initializable {
     public Label name1;
     public TextField changePlayerFIeld;
     public Label player;
-    public TableView playersTable;
-    public TableColumn idColumn;
-    public TableColumn nameColumn;
-    public TableColumn surnameColumn;
-    public TableColumn numberColumn;
-    public TableColumn formColumn;
-    public TableColumn matchesColumn;
-    public TableColumn GoalsColumn;
-    public TableColumn assistsColumn;
+    public TableView<Giocatore> playersTable;
+    public TableColumn<Giocatore, Integer> shirtColumn;
+    public TableColumn<Giocatore, String> nameColumn;
+    public TableColumn<Giocatore, String> surnameColumn;
+    public TableColumn<Giocatore, Integer> ageColumn;
+    public TableColumn<Giocatore, Integer> assistsColumn;
+    public TableColumn<Giocatore, Integer> positionColumn;
+    public TableColumn<Giocatore, Integer> minutesColumn;
+    public TableColumn<Giocatore, Integer> goalsColumn;
+    public TableColumn<Giocatore, String> nationalityColumn;
     public Button changeButton;
     public Label name;
     public Label surname;
     public Label salary;
     public Label years;
+
 
     ArrayList<Double> namesPositions = new ArrayList<Double>();
     ArrayList<Circle> circles = new ArrayList<>();
@@ -78,6 +83,8 @@ public class LineUpController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        /*todo rendere il textfield non focusabile. Aggiungere i giocatori della squadra alla tabella
+          todo far si che quando clicco su un giocatore in tabella, il nome compaia nel textfield e poi si proceda al cambio */
 
         circles.add(n2);
         circles.add(n3);
@@ -154,10 +161,22 @@ public class LineUpController implements Initializable {
             salary.setText(String.valueOf(model.getAllenatoreBySquadra(team).getStipendio()));
             years.setText(String.valueOf(model.getAllenatoreBySquadra(team).getAnniContratto()));
             List<Giocatore> giocatori = model.getGiocatoriBySquadra(team);
-            for(Giocatore g : giocatori){
-                System.out.println(g.getNome());
-            }
+            ObservableList<Giocatore> observableGiocatori = FXCollections.observableArrayList(giocatori);
+            shirtColumn.setCellValueFactory(new PropertyValueFactory<>("numMaglia"));
+            nameColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
+            surnameColumn.setCellValueFactory(new PropertyValueFactory<>("cognome"));
+            ageColumn.setCellValueFactory(new PropertyValueFactory<>("eta"));
+            positionColumn.setCellValueFactory(new PropertyValueFactory<>("ruolo"));
+            minutesColumn.setCellValueFactory(new PropertyValueFactory<>("MinutiGiocati"));
+            goalsColumn.setCellValueFactory(new PropertyValueFactory<>("Goal"));
+            assistsColumn.setCellValueFactory(new PropertyValueFactory<>("Assist"));
+            nationalityColumn.setCellValueFactory(new PropertyValueFactory<>("nazionalita"));
+            playersTable.setItems(observableGiocatori);
+
+
+
         });
+
     }
 
     private void onChoiceSelected(String choice) {
