@@ -237,8 +237,8 @@
                   <Label fx:id="years" layoutX="7.0" layoutY="53.0" text="Anni" />
                </children>
             </Pane>
-            <TextField fx:id="changePlayerFIeld" focusTraversable="false" layoutX="66.0" layoutY="345.0" onMouseClicked="#changePlayerNameByKeyboard" prefHeight="26.0" prefWidth="178.0" />
-            <TableView fx:id="playersTable" layoutY="392.0" prefHeight="218.0" prefWidth="624.0">
+            <TextField fx:id="changePlayerFIeld" disable="true" focusTraversable="false" layoutX="66.0" layoutY="345.0" onMouseClicked="#changePlayerNameByKeyboard" prefHeight="26.0" prefWidth="178.0" />
+            <TableView fx:id="playersTable" layoutY="392.0" onMouseClicked="#selectPlayer" prefHeight="218.0" prefWidth="624.0">
               <columns>
                 <TableColumn fx:id="shirtColumn" prefWidth="55.199949622154236" text="N°Maglia" />
                 <TableColumn fx:id="nameColumn" prefWidth="84.00006866455078" text="Nome" />

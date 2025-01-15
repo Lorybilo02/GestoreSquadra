@@ -75,7 +75,7 @@ public class LineUpController implements Initializable {
     public Label salary;
     public Label years;
 
-
+    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
     ArrayList<Double> namesPositions = new ArrayList<Double>();
     ArrayList<Circle> circles = new ArrayList<>();
     ArrayList<Label> names = new ArrayList<>();
@@ -83,7 +83,7 @@ public class LineUpController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /*todo rendere il textfield non focusabile. Aggiungere i giocatori della squadra alla tabella
+        /*
           todo far si che quando clicco su un giocatore in tabella, il nome compaia nel textfield e poi si proceda al cambio */
 
         circles.add(n2);
@@ -155,11 +155,11 @@ public class LineUpController implements Initializable {
             Stage stage = (Stage) name.getScene().getWindow();
             String username = stage.getTitle();
             String team = model.getSquadraByAllenatore(username);
-            name.setText(model.getAllenatoreBySquadra(team).getNome());
+            name.setText("Nome: " + model.getAllenatoreBySquadra(team).getNome());
             System.out.println(model.getAllenatoreBySquadra(team).getCognome() + "DIO");
-            surname.setText(model.getAllenatoreBySquadra(team).getCognome());
-            salary.setText(String.valueOf(model.getAllenatoreBySquadra(team).getStipendio()));
-            years.setText(String.valueOf(model.getAllenatoreBySquadra(team).getAnniContratto()));
+            surname.setText("Cognome: " + model.getAllenatoreBySquadra(team).getCognome());
+            salary.setText("Stipendio: " + String.valueOf(model.getAllenatoreBySquadra(team).getStipendio()));
+            years.setText(String.valueOf("Anni restanti: " + model.getAllenatoreBySquadra(team).getAnniContratto()));
             List<Giocatore> giocatori = model.getGiocatoriBySquadra(team);
             ObservableList<Giocatore> observableGiocatori = FXCollections.observableArrayList(giocatori);
             shirtColumn.setCellValueFactory(new PropertyValueFactory<>("numMaglia"));
@@ -172,9 +172,12 @@ public class LineUpController implements Initializable {
             assistsColumn.setCellValueFactory(new PropertyValueFactory<>("Assist"));
             nationalityColumn.setCellValueFactory(new PropertyValueFactory<>("nazionalita"));
             playersTable.setItems(observableGiocatori);
+            int i = 0;
+            for(Giocatore g : giocatori){
+                if(g.getIsTitolare() == 1){
 
-
-
+                }
+            }
         });
 
     }
@@ -289,14 +292,6 @@ public class LineUpController implements Initializable {
         }
     }
 
-    @FXML
-    private Label welcomeText;
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-
     public void setLabel(MouseEvent mouseEvent) {
         player = (Label) mouseEvent.getSource();
         changePlayerFIeld.setText(player.getText());
@@ -313,6 +308,12 @@ public class LineUpController implements Initializable {
                 player.setText(changePlayerFIeld.getText());
                 player.setLayoutX(centerX - (player.getText().length() * 5.6 / 2));
             }
+        }
+        else{
+            errorAlert.setTitle("Errore!");
+            errorAlert.setHeaderText("ERRORE!!!");
+            errorAlert.setContentText("NON HAI SELEZIONATO IL TITOLARE DA SOSTITUIRE!");
+            errorAlert.show();
         }
     }
 
@@ -342,4 +343,8 @@ public class LineUpController implements Initializable {
     }
 
 
+    public void selectPlayer(MouseEvent mouseEvent) {
+        Giocatore selectedPlayer = playersTable.getSelectionModel().getSelectedItem();
+        changePlayerFIeld.setText(selectedPlayer.getCognome());
+    }
 }
