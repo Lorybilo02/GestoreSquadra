@@ -10,9 +10,11 @@ public class Allenatore {
     private int stipendio;
     private String squadra;
     private int AnniContratto;
+    private String modulo;
+    private String nazionalita;
 
 
-    public Allenatore(int id, String username, String password, String nome,String cognome, int eta, int stipendio, String squadra, int AnniContratto) {
+    public Allenatore(int id, String username, String password, String nome,String cognome, int eta, int stipendio, String squadra, int AnniContratto, String modulo, String nazionalita) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -22,6 +24,8 @@ public class Allenatore {
         this.stipendio = stipendio;
         this.squadra = squadra;
         this.AnniContratto = AnniContratto;
+        this.modulo = modulo;
+        this.nazionalita = nazionalita;
     }
     //construttore vuoto
     public Allenatore () {}
@@ -93,6 +97,10 @@ public class Allenatore {
     public void setAnniContratto(int AnniContratto) {
         this.AnniContratto = AnniContratto;
     }
+    public String getModulo(){return modulo;}
+    public void setModulo(String modulo) { this.modulo= modulo;}
+    public String getNazionalita(){return nazionalita;}
+    public void setNazionalita(String nazionalita){ this.nazionalita = nazionalita;}
 
 
 }

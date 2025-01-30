@@ -17,9 +17,9 @@
 
 <VBox onKeyPressed="#setPlayernName" prefHeight="613.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.teammanagement.LineUpController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="613.0" prefWidth="607.0" style="-fx-background-color: DarkSlateGrey; -fx-border-color: Black;" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="613.0" prefWidth="607.0" style="-fx-background-color: DarkSlateGrey; -fx-border-color: Black;" VBox.vgrow="NEVER">
       <children>
-            <Button fx:id="changeButton" layoutX="344.0" layoutY="328.0" mnemonicParsing="false" onMouseClicked="#changePlayerNameByClick" onMouseEntered="#hover" onMouseExited="#removeHover" prefHeight="51.0" prefWidth="178.0" style="-fx-background-color: DarkBlue; -fx-border-color: Black;" text="Cambia Titolare" textFill="WHITE">
+            <Button fx:id="changeButton" layoutX="219.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#changePlayerNameByClick" onMouseEntered="#hoverChange" onMouseExited="#removeHoverChange" prefHeight="51.0" prefWidth="178.0" style="-fx-background-color: DarkBlue; -fx-border-color: Black;" text="Cambia Titolare" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="14.0" />
                </font></Button>
@@ -219,17 +219,17 @@
                         </LinearGradient>
                      </fill>
                   </Circle>
-                  <Label fx:id="name10" layoutX="107.0" layoutY="56.0" onMouseClicked="#setLabel" text="Yildiz" />
-                  <Label fx:id="name8" layoutX="275.0" layoutY="56.0" onMouseClicked="#setLabel" text="Koopmeiners" />
-                  <Label fx:id="name11" layoutX="452.0" layoutY="56.0" onMouseClicked="#setLabel" text="Nico Gonzalez" />
-                  <Label fx:id="name9" layoutX="287.0" onMouseClicked="#setLabel" text="Vlahovic" />
-                  <Label fx:id="name2" layoutX="95.0" layoutY="166.0" onMouseClicked="#setLabel" text="Cambiaso" />
-                  <Label fx:id="name6" layoutX="210.0" layoutY="129.0" onMouseClicked="#setLabel" text="Douglas Luiz" />
-                  <Label fx:id="name7" layoutX="353.0" layoutY="129.0" onMouseClicked="#setLabel" text="Locatelli" />
-                  <Label fx:id="name3" layoutX="224.0" layoutY="200.0" onMouseClicked="#setLabel" text="Bremer" />
-                  <Label fx:id="name4" layoutX="361.0" layoutY="200.0" onMouseClicked="#setLabel" text="Gatti" />
-                  <Label fx:id="name5" layoutX="473.0" layoutY="167.0" onMouseClicked="#setLabel" text="Kalulu" />
-                  <Label fx:id="name1" layoutX="276.0" layoutY="245.0" onMouseClicked="#setLabel" text="Di Gregorio" />
+                  <Label fx:id="name10" layoutX="107.0" layoutY="56.0" onMouseClicked="#setLabel" text="Giocatore10" />
+                  <Label fx:id="name8" layoutX="281.0" layoutY="56.0" onMouseClicked="#setLabel" text="Giocatore8" />
+                  <Label fx:id="name11" layoutX="452.0" layoutY="56.0" onMouseClicked="#setLabel" text="Giocatore11" />
+                  <Label fx:id="name9" layoutX="281.0" onMouseClicked="#setLabel" text="Giocatore9" />
+                  <Label fx:id="name2" layoutX="95.0" layoutY="166.0" onMouseClicked="#setLabel" text="Giocatore2" />
+                  <Label fx:id="name6" layoutX="210.0" layoutY="129.0" onMouseClicked="#setLabel" text="Giocatore6" />
+                  <Label fx:id="name7" layoutX="353.0" layoutY="129.0" onMouseClicked="#setLabel" text="Giocatore7" />
+                  <Label fx:id="name3" layoutX="224.0" layoutY="200.0" onMouseClicked="#setLabel" text="Giocatore3" />
+                  <Label fx:id="name4" layoutX="346.0" layoutY="200.0" onMouseClicked="#setLabel" text="Giocatore4" />
+                  <Label fx:id="name5" layoutX="473.0" layoutY="167.0" onMouseClicked="#setLabel" text="Giocatore5" />
+                  <Label fx:id="name1" layoutX="281.0" layoutY="245.0" onMouseClicked="#setLabel" text="Giocatore 1" />
                   <ChoiceBox fx:id="choicer" layoutX="489.0" layoutY="1.0" prefWidth="150.0" />
                   <Label fx:id="name" layoutX="7.0" layoutY="3.0" prefHeight="17.0" prefWidth="94.0" text="Nome" />
                   <Label fx:id="surname" layoutX="7.0" layoutY="19.0" text="Cognome" />
@@ -237,8 +237,8 @@
                   <Label fx:id="years" layoutX="7.0" layoutY="53.0" text="Anni" />
                </children>
             </Pane>
-            <TextField fx:id="changePlayerFIeld" disable="true" focusTraversable="false" layoutX="66.0" layoutY="345.0" onMouseClicked="#changePlayerNameByKeyboard" prefHeight="26.0" prefWidth="178.0" />
-            <TableView fx:id="playersTable" layoutY="392.0" onMouseClicked="#selectPlayer" prefHeight="218.0" prefWidth="624.0">
+            <TextField fx:id="changePlayerFIeld" disable="true" focusTraversable="false" layoutX="2.0" layoutY="339.0" onMouseClicked="#changePlayerNameByKeyboard" prefHeight="26.0" prefWidth="178.0" />
+            <TableView fx:id="playersTable" layoutY="392.0" onKeyPressed="#arrowsSwitch" onMouseClicked="#selectPlayer" prefHeight="218.0" prefWidth="624.0" stylesheets="@tableview-style.css">
               <columns>
                 <TableColumn fx:id="shirtColumn" prefWidth="55.199949622154236" text="N°Maglia" />
                 <TableColumn fx:id="nameColumn" prefWidth="84.00006866455078" text="Nome" />
@@ -254,6 +254,11 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
+            <Button fx:id="requestsButton" layoutX="434.0" layoutY="327.0" mnemonicParsing="false" onAction="#viewRequests" onMouseEntered="#hoverRequests" onMouseExited="#removeHoverRequests" prefHeight="51.0" prefWidth="178.0" style="-fx-background-color: Red; -fx-border-color: black;" text="Richieste" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+            </Button>
       </children>
     </AnchorPane>
   </children>

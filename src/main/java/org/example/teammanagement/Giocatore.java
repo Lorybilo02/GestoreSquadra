@@ -18,6 +18,7 @@ public class Giocatore {
     private int Assist;
     private int MinutiGiocati;
     private int isTitolare;
+    private String inCampo;
     // Costruttore
     public Giocatore() {
         this.id = id;
@@ -37,6 +38,7 @@ public class Giocatore {
         this.Assist = Assist;
         this.MinutiGiocati = MinutiGiocati;
         this.isTitolare = isTitolare;
+        this.inCampo = inCampo;
 
     }
 
@@ -150,9 +152,11 @@ public class Giocatore {
     public int getAssist() {return Assist;}
     public void setAssist(int Assist) {this.Assist = Assist;}
     public int getMinutiGiocati() { return MinutiGiocati;}
-    public void setMinutiGiocati(int minutiGiocati) {this.MinutiGiocati = MinutiGiocati;}
+    public void setMinutiGiocati(int minutiGiocati) {this.MinutiGiocati = minutiGiocati;}
     public int getIsTitolare() { return isTitolare;}
     public void setIsTitolare( int isTitolare) {this.isTitolare = isTitolare;}
+    public String getinCampo(){return inCampo;};
+    public void setinCampo(String inCampo){this.inCampo = inCampo;}
 
 
 }

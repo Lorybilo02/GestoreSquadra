@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@tableview-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.teammanagement.AdminRequestsController">
+   <children>
+      <TableView fx:id="managersRequestsTable" onMouseClicked="#removePRSelection" layoutX="128.0" layoutY="200.0" prefHeight="200.0" prefWidth="344.0">
+        <columns>
+          <TableColumn fx:id="managerRequestIdColumn" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="managerUsernameColumn" prefWidth="75.0" text="Username" />
+            <TableColumn fx:id="managerSalaryColumn" prefWidth="75.0" text="Stipendio" />
+            <TableColumn fx:id="managerYearsColumn" prefWidth="117.5999755859375" text="Anni di Contratto" />
+        </columns>
+      </TableView>
+      <TableView fx:id="playersRequestsTable" onMouseClicked="#removeMRSelection" layoutX="128.0" prefHeight="200.0" prefWidth="344.0">
+        <columns>
+          <TableColumn fx:id="playerRequestIdColumn" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="playerUsernameColumn" prefWidth="75.0" text="Username" />
+            <TableColumn fx:id="playerSalaryColumn" prefWidth="75.0" text="Stipendio" />
+            <TableColumn fx:id="playerYearsColumn" prefWidth="117.5999755859375" text="Anni di Contratto" />
+        </columns>
+      </TableView>
+      <Button fx:id="acceptButton" layoutX="487.0" layoutY="238.0" mnemonicParsing="false" onMouseEntered="#hover" onMouseExited="#removeHover" onAction="#acceptRequest" prefHeight="62.0" prefWidth="97.0" style="-fx-background-color: Gold; -fx-border-color: Black;" text="Accetta">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="refuseButton" layoutX="486.0" layoutY="323.0" mnemonicParsing="false" onMouseEntered="#hover" onMouseExited="#removeHover" onAction="#refuseRequest" prefHeight="62.0" prefWidth="98.0" style="-fx-background-color: Red; -fx-border-color: Black;" text="Rifiuta" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="acceptAllButton" layoutX="487.0" layoutY="38.0" mnemonicParsing="false" onMouseEntered="#hover" onMouseExited="#removeHover" onAction="#acceptAllRequests" prefHeight="62.0" prefWidth="98.0" style="-fx-background-color: darkBlue; -fx-border-color: black;" text="Accetta Tutto" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="refuseAllButton" layoutX="487.0" layoutY="131.0" mnemonicParsing="false" onMouseEntered="#hover" onMouseExited="#removeHover" onAction="#refuseAllRequests" prefHeight="62.0" prefWidth="98.0" style="-fx-background-color: Green; -fx-border-color: black;" text="Rifiuta Tutto" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="13.0" layoutY="208.0" text="Richieste Allenatori ">
+         <font>
+            <Font name="Arial Narrow" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="15.0" layoutY="6.0" text="Richieste Giocatori">
+         <font>
+            <Font name="Arial Narrow" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
